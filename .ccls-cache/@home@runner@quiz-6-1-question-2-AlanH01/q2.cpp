@@ -1,30 +1,35 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
-void getRandnum(int &n1, int &n2, int &n3)
+void gerRandnum(int &n1, int &n2, int &n3)
 {
-  n1 = rand();
-  n2 = rand();
-  n3 = rand();
+  srand((unsigned int)time(NULL));
+  n1 = rand()%100;
+  n2 = rand()%100;
+  n3 = rand()%100;
 }
 int findMin(int n1, int n2, int n3)
 {
-  if(n1 < n2 && n1 < n3)
+  if (n1 < n2 && n1 < n3)
     return n1;
-  if(n2 < n3 && n2 < n1)
+  else if (n2 < n3)
     return n2;
-  return n3;
+  else
+    return n3;
 }
 void printResult(int n1, int n2, int n3, int min)
 {
-  cout << "3 Random Numbers are: " << n1 << " " << n2 << " " << n3 << endl;
-  cout << "The minimum value is: " << min << endl;
+  cout << "Value one: " << n1 << endl;
+  cout << "Value two: " << n2 << endl;
+  cout << "Value three: " << n3 << endl;
+  cout << "Minimum number is: " << min << endl;
 }
 int main()
 {
   int n1, n2, n3, min;
-  getRandnum(n1, n2, n3);
-  min = findMin (n1, n2, n3);
+  gerRandnum(n1, n2, n3);
+  min = findMin(n1, n2, n3);
   min = findMin(n1, n2, n3);
   printResult(n1, n2, n3, min);
 }
